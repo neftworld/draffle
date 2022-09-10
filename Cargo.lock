@@ -637,14 +637,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "community-staking"
-version = "0.1.0"
-dependencies = [
- "anchor-lang",
- "anchor-spl",
-]
-
-[[package]]
 name = "console"
 version = "0.15.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -897,20 +889,6 @@ dependencies = [
  "libc",
  "redox_users",
  "winapi",
-]
-
-[[package]]
-name = "dispenser"
-version = "0.1.0"
-dependencies = [
- "anchor-lang",
- "anchor-spl",
- "assert_matches",
- "bincode",
- "solana-program-test",
- "solana-sdk",
- "spl-associated-token-account",
- "spl-token",
 ]
 
 [[package]]

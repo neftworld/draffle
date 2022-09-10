@@ -22,11 +22,11 @@ pub mod treasury {
     declare_id!("Treasury11111111111111111111111111111111112");
 }
 
-#[cfg(not(feature = "production"))]
-declare_id!("dRaFFLe111111111111111111111111111111111112");
+// #[cfg(not(feature = "production"))]
+// declare_id!("dRaFFLe111111111111111111111111111111111112");
 
-#[cfg(feature = "production")]
-declare_id!("dRafA7ymQiLKjR5dmmdZC9RPX4EQUjqYFB3mWokRuDs");
+// #[cfg(feature = "production")]
+declare_id!("5TVjBA9DhNQJxnQbWiH2qiDy5o68XdrZaW9bSXgwJaG5");
 
 #[program]
 pub mod draffle {
@@ -313,7 +313,7 @@ pub struct CreateRaffle<'info> {
         seeds = [b"raffle".as_ref(), entrants.key().as_ref()],
         bump,
         payer = creator,
-        space = 8 + 32 + 4 + 4 + 4 + 32 + 8 + 8 + 32,
+        space = 8 + 32 + 32 + 4 + 4 + 16 + 32, //8 + 32 + 32 + 4 + 4 + 4  + 8 + 8 + 32,
     )]
     pub raffle: Account<'info, Raffle>,
     #[account(zero)]
@@ -436,13 +436,16 @@ pub struct CloseEntrants<'info> {
 pub struct Raffle {
     pub bump: u8,
     pub creator: Pubkey,
+    pub entrants: Pubkey,
     pub total_prizes: u32,
     pub claimed_prizes: u32,
-    pub randomness: Option<[u8; 32]>,
-    pub end_timestamp: i64,
+    pub end_timestamp: u64,
     pub ticket_price: u64,
-    pub entrants: Pubkey,
+    pub randomness: Option<[u8; 32]>,
 }
+
+// 8 + 32 + 4 + 4 + 4 + 32 + 8 + 8 + 32
+
 
 #[account]
 pub struct Entrants {
